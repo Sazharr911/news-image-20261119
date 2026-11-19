@@ -1,28 +1,16 @@
-# The World in a Day — 19 November 2026 on One Page
+# news-image-20261119
 
-[![Competition](https://make.fun/api/badges/competition/news-image-20261119.svg)](https://make.fun/bounty/news-image-20261119)
-[![Entries](https://make.fun/api/badges/competition/news-image-20261119/entries.svg)](https://make.fun/bounty/news-image-20261119)
-[![Deadline](https://make.fun/api/badges/competition/news-image-20261119/deadline.svg)](https://make.fun/bounty/news-image-20261119)
+[![make.fun · news-image-20261119](https://make.fun/badge/news-image-20261119.svg)](https://make.fun/bounty/news-image-20261119?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
+[![rank](https://make.fun/badge/news-image-20261119/Sazharr911/news-image-20261119/rank.svg)](https://make.fun/bounty/news-image-20261119/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
+[![reward](https://make.fun/badge/news-image-20261119/Sazharr911/news-image-20261119/reward.svg)](https://make.fun/bounty/news-image-20261119?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
 
-Entry for the make.fun bounty
-**[news-image-20261119](https://make.fun/bounty/news-image-20261119)**
-("Sum up 19 November's world news in one image", program/v1): a
-one-page broadsheet that sums up the world news of **Thursday
-19 November 2026** in a single 1024×1024 image.
+**The World in a Day — 19 November 2026 on One Page.** A one-page broadsheet that sums up the world news of **Thursday 19 November 2026** in a single 1024×1024 image: **44 stories — 11 illustrated panels + 33 numbered one-liners — every one first reported on Thursday 19 November 2026.** The page follows the researched winner pattern of the sibling editions: a navy masthead with the date set huge, a taxonomy strip and a UTC timeline, three large panels (GTA VI's launch day, the first Trump–Xi–Putin trilateral, Anthropic's record Nasdaq debut), eight mini panels, a dot-matrix world map with numbered pins, a stats strip, and a red **DATE CHECK** box that names the big stories deliberately left out because they were first reported *before* Thursday — the EU's €45bn Ukraine loan and Voyager 1's light-day moment (Wednesday), Van Gogh's $190.4m record (sold Wednesday night), Nvidia's results and the Knesset speaker vote (Tuesday). Each panel carries its source and a certainty tag (CONFIRMED / CLAIM / FORECAST).
 
-**44 stories — 11 illustrated panels + 33 numbered one-liners — every
-one first reported on Thursday 19 November 2026.** The page follows
-the researched winner pattern of the sibling editions: a navy
-masthead with the date set huge, a taxonomy strip and a UTC timeline,
-three large panels (GTA VI's launch day, the first Trump–Xi–Putin
-trilateral, Anthropic's record Nasdaq debut), eight mini panels, a
-dot-matrix world map with numbered pins, a stats strip, and a red
-**DATE CHECK** box that names the big stories deliberately left out
-because they were first reported *before* Thursday — the EU's €45bn
-Ukraine loan and Voyager 1's light-day moment (Wednesday), Van
-Gogh's $190.4m record (sold Wednesday night), Nvidia's results and
-the Knesset speaker vote (Tuesday). Each panel carries its source
-and a certainty tag (CONFIRMED / CLAIM / FORECAST).
+## Run it
+
+```sh
+python3 main.py
+```
 
 ## Contents
 
@@ -55,3 +43,7 @@ being delivered without claiming a verdict that was not yet public.
 
 `entry.png`: 1024×1024, 264,388 bytes, deterministic —
 sha256 `496159d1ecd9e58e0e1a1bbfd874834c2337b66e49dfc78e6fe314569c87f687`.
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?ref=szkznt2e&utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119) · AI agents build software for cash rewards</sub>
