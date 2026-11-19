@@ -1,87 +1,105 @@
 #!/usr/bin/env python3
+"""Deliver the finished front page to the competition output folder.
+
+The artwork itself is rendered ahead of time by draw.py and committed
+to this repository as entry.png.  The program/v1 sandbox that runs
+this file offers nothing but the Python standard library, so there is
+no drawing to do here: the job is simply to place entry.png at the
+output location, carefully.
+
+Before anything is written, the source image is sanity-checked (real
+PNG, 1024 x 1024, inside the 1 MiB size limit, not truncated).  The
+copy is then staged under a temporary name inside the destination
+directory and renamed over the final path, so a reader can never
+catch a half-written file.  Finally the delivered bytes are compared
+against the source to prove the copy is exact.
+
+Run it with:  python3 main.py
+Output:       /output/entry.png  (MAKEFUN_OUT overrides the path)
 """
-THE WORLD IN A DAY -- runtime program (stdlib only).
 
-Copies the pre-rendered entry.png (drawn at build time by draw.py)
-to the competition output path. The competition's program/v1 runtime
-has only the Python standard library -- no Pillow, no system fonts --
-so this file does no drawing at all: it verifies the committed
-entry.png (PNG signature, 1024x1024 dimensions, the 1 MiB
-competition cap), copies it to the output path, verifies the copy
-byte-for-byte, and exits 0.
-
-Usage:
-
-    python3 main.py
-
-Writes /output/entry.png (override with the MAKEFUN_OUT environment
-variable). Needs nothing beyond Python 3's standard library.
-"""
-
-import hashlib
 import os
 import shutil
-import struct
 import sys
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-SRC = os.path.join(HERE, "entry.png")
-DEFAULT_OUT = "/output/entry.png"
-MAX_BYTES = 1048576  # the competition's 1 MiB cap
-PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
+IMAGE_NAME = "entry.png"
+DEST_PATH = "/output/entry.png"
+SIZE_LIMIT = 1024 * 1024          # competition cap: 1 MiB
+EXPECTED_SIDE = 1024              # the page is square, 1024 x 1024
+PNG_MAGIC = b"\x89PNG\r\n\x1a\n"
 
 
-def fail(message):
-    print("main.py: error:", message, file=sys.stderr)
+def bail(reason):
+    """Print a clear failure message and hand back a nonzero code."""
+    sys.stderr.write("main.py: cannot deliver the page: %s\n" % reason)
     return 1
 
 
-def read_png_header(path):
-    """Return (width, height) from a PNG file's IHDR chunk."""
-    with open(path, "rb") as fh:
-        head = fh.read(33)
-    if len(head) < 33 or head[:8] != PNG_SIGNATURE:
-        raise ValueError("not a PNG file (bad signature)")
-    if head[12:16] != b"IHDR":
-        raise ValueError("not a PNG file (missing IHDR)")
-    width, height = struct.unpack(">II", head[16:24])
+def png_dimensions(path):
+    """Read the (width, height) pair out of the PNG IHDR header."""
+    with open(path, "rb") as handle:
+        header = handle.read(24)
+    if len(header) < 24 or not header.startswith(PNG_MAGIC):
+        raise ValueError("the file does not start with a PNG signature")
+    if header[12:16] != b"IHDR":
+        raise ValueError("the first PNG chunk is not IHDR")
+    width = int.from_bytes(header[16:20], "big")
+    height = int.from_bytes(header[20:24], "big")
     return width, height
 
 
-def main():
-    out_path = os.environ.get("MAKEFUN_OUT") or DEFAULT_OUT
-    if not os.path.isfile(SRC):
-        return fail("entry.png not found next to main.py")
-    size = os.path.getsize(SRC)
-    if size > MAX_BYTES:
-        return fail("entry.png is %d bytes, over the 1 MiB cap" % size)
+def ends_with_iend(path):
+    """True when the file's last chunk is IEND, i.e. not truncated."""
+    with open(path, "rb") as handle:
+        handle.seek(-12, os.SEEK_END)
+        tail = handle.read(12)
+    return len(tail) == 12 and tail[4:8] == b"IEND"
+
+
+def deliver():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    source = os.path.join(script_dir, IMAGE_NAME)
+    target = os.environ.get("MAKEFUN_OUT") or DEST_PATH
+
+    if not os.path.isfile(source):
+        return bail("%s is missing; it must sit next to main.py" % IMAGE_NAME)
+
+    size = os.path.getsize(source)
+    if size > SIZE_LIMIT:
+        return bail("%s weighs %d bytes, over the 1 MiB limit"
+                    % (IMAGE_NAME, size))
+
     try:
-        width, height = read_png_header(SRC)
-    except (OSError, ValueError) as exc:
-        return fail("entry.png failed verification: %s" % exc)
-    if (width, height) != (1024, 1024):
-        return fail("entry.png is %dx%d, expected 1024x1024"
-                    % (width, height))
-    # The file must end with a complete IEND chunk, so a truncated
-    # PNG can never pass verification even if its header is intact.
-    with open(SRC, "rb") as fh:
-        fh.seek(-12, os.SEEK_END)
-        tail = fh.read(12)
-    if len(tail) != 12 or tail[4:8] != b"IEND":
-        return fail("entry.png is truncated (no IEND chunk)")
-    out_dir = os.path.dirname(out_path)
-    if out_dir:
-        os.makedirs(out_dir, exist_ok=True)
-    shutil.copyfile(SRC, out_path)
-    with open(SRC, "rb") as fh:
-        src_hash = hashlib.sha256(fh.read()).hexdigest()
-    with open(out_path, "rb") as fh:
-        out_hash = hashlib.sha256(fh.read()).hexdigest()
-    if src_hash != out_hash:
-        return fail("output copy does not match entry.png")
-    print("wrote %s (%d bytes, sha256 %s)" % (out_path, size, src_hash))
+        width, height = png_dimensions(source)
+        complete = ends_with_iend(source)
+    except (OSError, ValueError) as problem:
+        return bail("%s failed its checks (%s)" % (IMAGE_NAME, problem))
+    if (width, height) != (EXPECTED_SIDE, EXPECTED_SIDE):
+        return bail("%s is %d x %d, but the page must be %d x %d"
+                    % (IMAGE_NAME, width, height,
+                       EXPECTED_SIDE, EXPECTED_SIDE))
+    if not complete:
+        return bail("%s looks truncated; its IEND chunk is missing"
+                    % IMAGE_NAME)
+
+    folder = os.path.dirname(target)
+    if folder:
+        os.makedirs(folder, exist_ok=True)
+    staging = target + ".part"
+    shutil.copyfile(source, staging)
+    os.replace(staging, target)  # atomic rename within the same folder
+
+    with open(source, "rb") as handle:
+        original = handle.read()
+    with open(target, "rb") as handle:
+        delivered = handle.read()
+    if delivered != original:
+        return bail("the delivered file differs from %s" % IMAGE_NAME)
+
+    print("delivered %s (%d bytes, byte-identical to %s)"
+          % (target, size, IMAGE_NAME))
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(deliver())
