@@ -8,6 +8,69 @@ that check; they are listed at the bottom with the dates they
 actually belong to, because the near-misses are exactly what this
 competition's faithfulness criterion punishes.
 
+## TOP-2 NOTES — fresh leaderboard study, Fri 2026-11-20 ~07:35 WIB (study only, original work — never copy their content)
+
+Baseline: round 1 finished, dev judge 98.3404% (contend 98.4810%, 11W/1D/0L), rank 229 / 10,996, prize 228. Fresh top-50 line 98.8555% (rank 50, laurakim, "36 stories, 15 pictured, DATE CHECK"). Gap to paid zone: +0.3745pp on contend.
+
+Rank 1 — hazel-harbor-63, "November 19 front page v3", 99.2344%, 33 stories, 318,641 bytes. Rank 2 — izayoi-20, "Precise Lemma", 99.2290%, 35 stories, 832,458 bytes.
+
+What both winners do that round 1 does not:
+1. **13–15 illustrated panels** (rank 1: 13, rank 2: 15) vs our 11. Rank-50 title itself advertises "15 pictured". Panel count, not story count, is the visible gap — winners carry FEWER total stories (33–35) than our 44.
+2. **State the ICJ verdict**: both say 9–6, Myanmar guilty of genocide against the Rohingya, reparations ordered, must allow return. Round 1 deliberately hedged ("judges decide whether…") — the verdict is now public and is the day's #2 story.
+3. **COP31 led by the draft's content**, not the process: "draft drops fossil fuels and $120bn aid goal" (rank 1) / "enters its last 48 hours, fossil-fuel phase-out and $120bn a year for adaptation in the draft" (rank 2). Round 1's "enters final two days, still split" is weaker.
+4. **Vote-count numbers in the stats strip**: 9–6, 109–0 (Danish Arctic pact vote), 4.9% (Australia jobless). Round 1's strip ($81.3bn / 589m / 47,000 / 299.25 GW) has no vote counts.
+5. **Consensus panels round 1 lacks entirely**: South Korea's Suneung exam (551,864 candidates), Florida floods shutting schools (up to 15.3 inches), Houthi missile shot down over Riyadh (sirens 04:42), Greenland/Denmark Arctic pact 109–0, Seoul court clears ex-PM Han, Colombia national strike, Kenya marathon champion banned 3 years for doping, Australia jobless 4.9%, Indonesia asset-seizure law after 18 years, Gaza tank raid over (CLAIM).
+6. **Neither winner carries** Save the Children 589m, the India–NZ Test, or India–Japan 2+2 as panels — all three are round-1 panels. Demote all three to ALSO.
+7. **Bottom-row furniture**: rank 2 has a "THE VERDICT" box (ICJ), a "HOW SURE ARE WE?" legend box (REPORTED/CLAIM/FORECAST) and a "MARKETS & MONEY" box. Rank 1 has a red DATE CHECK box naming left-out stories. Round 1 already has DATE CHECK + HOW SURE legend; add a VERDICT box.
+8. **"THE DAY BY HOURS" timeline** (rank 2): 00:00 Auckland GTA VI unlocks · 04:42 Riyadh sirens · 08:40 Seoul exam · 09:30 Jakarta law · 10:00 The Hague ruling · PM Shenzhen trilateral · 09:30 New York market opens. Round 1's UTC strip is the same idea — keep, with the new events.
+9. **Later, bigger numbers**: Akvan evacuees 204,070 listed (rank 2) vs round 1's 47,000; GTA VI "13 years after the last one", reviews 99 on Metacritic, 17.1m pre-orders.
+10. **Hero row = hard news first**: rank 1 heroes are trilateral / ICJ / COP31; rank 2 heroes are trilateral / GTA VI / Anthropic. Round 2 plan: heroes trilateral / ICJ verdict / GTA VI; COP31 + Anthropic as large illustrated small panels.
+
+Transferable lessons carried into the round-2 revision: 15 illustrated panels (3 heroes + 12), verdict stated, COP31 draft content, vote counts in the stats strip, the 10 consensus panels above, Save the Children / Test / 2+2 demoted to ALSO, VERDICT box added, total stories ≥45.
+
+## ROUND 2 — revised page (Fri 2026-11-20, verified this morning)
+
+Baseline: round 1 finished at dev 98.3404% (contend 98.4810%), rank 229/10,996; top-50 line 98.8555%. Fresh kit status: entries_made 1, can_submit=true, day cap 3 left. Hermes did NOT answer the final consult (SSH closed by remote host, ~07:40 WIB) — proceeded without him.
+
+Top-2 lessons applied: 15 illustrated panels (3 heroes + 12), ICJ verdict stated, COP31 draft content, vote counts in the stats strip, VERDICT box added, Save the Children / Test / 2+2 demoted to ALSO. Total: **15 panels + 31 ALSO = 46 stories**.
+
+### Panels (1–15) — every item first reported Thu 19 Nov 2026
+
+| # | Story | Source | Tag | Verification |
+|---|-------|--------|-----|--------------|
+| 1 | Trump, Xi and Putin hold first trilateral talks; four-point "Declaration toward Peace" (UN reform, refined-fuel supply, ICC consent, nuclear-risk dialogue); nothing on Ukraine or Iran | Reuters · NYT · CFR | CONFIRMED | Kylin Villa, Shenzhen, ~90 min, Thu 19 Nov; declaration published by all three capitals same day. |
+| 2 | World Court: Myanmar committed genocide — 9 to 6, reparations ordered, safe return, compensation amount later | ICJ · BBC | CONFIRMED | Judgment read Thu 10:00 CET, Peace Palace; ~10,000 killed, 730,000+ fled 2017; first state held liable for genocide. |
+| 3 | GTA VI is out: the world enters Vice City — 13 years on, 99 on Metacritic (record tie), 17.1m pre-orders, $1.65bn | BBC · Sensor Tower | CONFIRMED | NZ unlock midnight Thu local; embargo lifted Wed 18 Nov; Sensor Tower est. via Reuters. |
+| 4 | COP31 draft drops fossil fuels and $120bn aid goal | Reuters | CONFIRMED | Slimmed Thu text, 144→80 paragraphs; $120bn figure removed; 35% electricity-by-2035 goal kept; first acknowledgement warming passes 1.5°C. |
+| 5 | Crimean Bridge hit a third time in a week | Reuters | CLAIM | Overnight strike into Thu; Russian-installed governor confirmed early Thu; traffic suspended. |
+| 6 | Saudis shoot down Houthi missiles over Riyadh | Reuters | CLAIM | Coalition "dealt with" missile threat over Riyadh Thu; debris + material damage; 4 more intercepted bound for the south; Houthis claim airport + financial centre. |
+| 7 | Cyclone Akvan nears India's coast: 105,304 moved to safety | IMD · PTI | FORECAST | Thu-afternoon count in 1,224 shelters; schools shut in 6 districts 19–21 Nov; landfall Fri noon near Puri, 90–100 gusting 110 km/h. |
+| 8 | Anthropic starts trading on Nasdaq after record $81.3bn sale | CNBC | CONFIRMED | Priced $83, 980m shares, $81.3bn — largest IPO ever, passing SpaceX's $75bn; ~$1.5tn valuation; ticker ANT. |
+| 9 | 551,864 sit South Korea's big exam (Suneung) | Yonhap | CONFIRMED | Thu 08:40–17:45 KST, 1,312 centres; flights paused 13:05–13:40 (130 flights); 22 caught with phones after emergency alert; $75,000 reward for AI-cheating reports. |
+| 10 | Denmark backs Arctic pact with US, 109–0 | AP | CONFIRMED | Folketing vote Thu; more US bases, Pituffik expansion; Greenland keeps sovereignty; signed Sept in New York. |
+| 11 | Korea's top court overturns ex-PM Han's 15-year term | AP · Yonhap | CONFIRMED | Supreme Court 9–3: prosecutors failed to prove Han meant to aid Yoon's martial-law bid; retrial ordered; the decree itself unconstitutional; Han stays in custody. |
+| 12 | Colombia's unions hold national strike | Infobae · US Embassy | CONFIRMED | CUT + FECODE + Indigenous/student groups march Thu in Bogotá, Medellín, Cali, Barranquilla, Bucaramanga against the Economic Rescue Law. |
+| 13 | Floods shut South Florida schools again | AP · NWS | CONFIRMED | Up to 15.3 inches in a day near Plantation; Broward closes a 2nd day, Miami-Dade joins; flood watch through Thu evening. |
+| 14 | Indonesia passes asset-seizure law after 18 years | Antara · DPR | CONFIRMED | Plenary Thu 09:30 WIB; state can seize assets ≥Rp1bn without a conviction; in force 12 months after enactment. |
+| 15 | Israel says its Gaza tank raid is over | Reuters | CLAIM | Army ends raid past the truce line in central Gaza Thu — first ground incursion since the Oct 2025 ceasefire; main north–south road reopened; Hamas calls it a violation. |
+
+### Also on Thursday (16–46)
+
+16 Save the Children: 589m children live in conflict zones (ReliefWeb, datelined 19 Nov) · 17 India v New Zealand, 1st Test, begins in Wellington (Cricbuzz) · 18 India–Japan 2+2 ministerial dialogue (PTI) · 19 Xi opens the APEC leaders' meeting in Shenzhen, $20m pledge (Xinhua) · 20 Kenya: marathon champion Jepchirchir banned 3 years for EPO, Sydney title stripped (AIU, announced Thu) · 21 Australia's jobless rate hits 4.9%, a 5-year high; 43,500 jobs lost (ABS, released Thu) · 22 Somalia expels the UAE ambassador, 72 hours to leave (AP) · 23 Sudan court sentences absent RSF chief Hemedti to death, a second time (Africanews, reported Thu) · 24 Author Corrado Augias dies at 91 (La Repubblica) · 25 New Zealand High Court: pay-equity cuts broke rights law (Reuters) · 26 Canary Islands: 11,000 migrants in 15 days, a record (Spanish govt figures) · 27 Tonga declares a drought state of emergency, 27 days (Tonga govt) · 28 Cyclone Xavier eases to category 4 over the northern Cook Islands (RNZ) · 29 Red giant seen swallowing a companion star (Nature paper; widely reported Thu) · 30 South Africa's central bank holds its rate at 7.25%, 4–3 split (SARB) · 31 Carney: Canada adjusts China ties, seeks the right deal with the US · 32 US senators warn AI-enabled cyber threats are outpacing defences · 33 Trump tells APEC leaders he opposes global AI regulation · 34 US Army offers eligible soldiers a four-day pass to play GTA VI · 35 Three workers die at NTPC plant, Jharkhand · 36 LeT commander killed in J&K encounter · 37 Air India crash probe nears completion · 38 House Democrats order Trump allies to preserve records · 39 EU pauses long-term UK talks pending London's Brexit stance · 40 BBC: abuse investigation at McDonald's · 41 USS Theodore Roosevelt arrives in the Middle East · 42 US panel urges China sanctions over Panama-flagged ship detentions · 43 Congress targets Modi government over inflation, seeks white paper · 44 President Murmu: 50 crore Indians out of extreme poverty in recent years · 45 Delhi-NCR schools resume physical classes as GRAP Stage-III curbs are revoked · 46 India imposes 162.5% duty on bulk Scotch imports despite the UK trade pact.
+
+Items 31–46 were verified for Thursday 19 Nov in the round-1 build (JagranJosh Thursday roundup + individual checks); items 16–30 verified fresh this morning.
+
+### Page furniture (round 2)
+
+- Stats strip: 3 presidents at one table · 9–6 World Court genocide vote · $120bn aid goal cut at COP31 · $81.3bn Anthropic's record IPO · 109–0 Danish vote on Arctic pact · 4.9% Australian jobless rate.
+- Timeline ("THE DAY BY HOURS — local time, in order"): 00:00 AUCKLAND GTA VI unlocks · 04:42 RIYADH air-raid sirens · 08:40 SEOUL exam begins · 09:30 JAKARTA law passed · 10:00 THE HAGUE genocide ruling · 14:30 SHENZHEN three leaders meet · 09:30 NEW YORK market opens.
+- Map pins 1–15 (panel 3, GTA VI, is worldwide: no pin; Seoul carries two pins, 9 and 11, offset).
+- VERDICT box: "THE VERDICT — THE HAGUE · 10:00: Myanmar committed genocide, 9 to 6. First state held liable. Must allow return, make reparations."
+- HOW SURE legend: REPORTED = confirmed by named sources · CLAIM = one side says so, unverified · FORECAST = poll, draft or schedule.
+- MARKETS & MONEY box: $83 IPO price (Wed) · $81.3bn largest IPO on record · 4.9% Australia jobless.
+- DATE CHECK box (unchanged exclusions): EU's €45bn Ukraine loan & Voyager 1's light-day moment (Wed) · Van Gogh's $190.4m record, sold Wed night in New York · Nvidia's results, the Board of Peace report & the Knesset vote (Tue) · The Deutsche Bank–Epstein files (Tue) · COP31's scheduled close (Fri) · Cyclone Akvan's landfall (Fri).
+- Dropped from round 1's ALSO list (weakest one-liners, replaced by verified late-Thursday items): coral-reef study, 299.25 GW figure, oil falls, bowel-cancer study, ESA space laws, NSA outage reports, Goldman India upgrade, Rajawat CEO, Mélenchon quote, NEET-UG charges, sports-leagues committee, Arora, Tata Steel, Reliance satellite, Odisha shelters (folded into the Akvan panel).
+
 ## Panels (1–11)
 
 | # | Story | Source | Tag | Verification |

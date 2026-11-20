@@ -16,9 +16,9 @@ clock, no network, so two runs give a byte-identical PNG.
 
 Layout follows the winner pattern of the sibling editions: a navy
 masthead with the date set huge, a field-taxonomy strip and a UTC
-timeline, three large illustrated panels, eight numbered mini
+timeline, three large illustrated panels, twelve numbered mini
 panels, a dot-matrix world map with numbered pins, a stats strip,
-and a numbered "ALSO ON THURSDAY" list -- 44 stories in all, each
+and a numbered "ALSO ON THURSDAY" list -- 46 stories in all, each
 first reported on Thursday 19 November 2026. The researched story
 list, with per-story verification notes and the date-check
 exclusions, lives in STORIES.md.
@@ -226,7 +226,7 @@ def scene_gta(cnv, box):
              width=2)
     cnv.line([x0 + 50, base + 13, x1 - 6, base + 13], fill=_hex("ffd76a"),
              width=2)
-    callout(cnv, x0, y1, "13 YEARS ON · $79.99")
+    callout(cnv, x0, y1, "99 METACRITIC · 17.1M PRE-ORDERS")
 
 
 def scene_summit(cnv, box):
@@ -234,8 +234,8 @@ def scene_summit(cnv, box):
     cnv.rectangle(box, fill=_hex("b9cdd9"))
     cnv.rectangle([x0, y1 - 12, x1, y1], fill=_hex("8fa9ba"))
     # Shenzhen towers behind
-    for fx, fh in ((0.55, 0.55), (0.64, 0.8), (0.74, 0.62), (0.83, 0.72),
-                   (0.92, 0.5)):
+    for fx, fh in ((0.55, 0.47), (0.64, 0.68), (0.74, 0.53), (0.83, 0.61),
+                   (0.92, 0.43)):
         tx = x0 + fx * (x1 - x0)
         cnv.rectangle([tx, y1 - 12 - fh * (y1 - y0), tx + 12, y1 - 12],
                       fill=_hex("6e8aa0"))
@@ -290,10 +290,10 @@ def scene_ipo(cnv, box):
     for gx in (0.22, 0.40, 0.58):
         gx0 = x0 + gx * (x1 - x0)
         cnv.line([gx0, y0 + 6, gx0, y1 - 16], fill=NAVY2, width=1)
-    put(cnv, x0 + (x1 - x0) * 0.78, y0 + 10, "ANT", F(SERIF_BLK, 30),
+    put(cnv, x0 + (x1 - x0) * 0.58, y0 + 2, "ANT", F(SERIF_BLK, 20),
         fill=_hex("ffffff"))
-    put(cnv, x0 + (x1 - x0) * 0.78, y0 + 44, "NASDAQ · DAY ONE",
-        F(SANS_B, 9), fill=GOLD_L)
+    put(cnv, x0 + (x1 - x0) * 0.58, y0 + 23, "NASDAQ · DAY ONE",
+        F(SANS_B, 7), fill=GOLD_L)
     callout(cnv, x0, y1, "$83 A SHARE · $81.3BN")
 
 
@@ -320,7 +320,7 @@ def scene_bridge(cnv, box):
         cnv.line([px, deck_y + 4, px, sea_y], fill=_hex("37424e"), width=3)
     # burst at the gap
     for ang in range(0, 360, 30):
-        r1, r2 = 3, 10 if ang % 60 == 0 else 7
+        r1, r2 = 2, 7 if ang % 60 == 0 else 5
         cnv.line([mid + r1 * math.cos(math.radians(ang)),
                   deck_y - 4 + r1 * math.sin(math.radians(ang)),
                   mid + r2 * math.cos(math.radians(ang)),
@@ -361,7 +361,7 @@ def scene_icj(cnv, box):
         cnv.arc([px - 8, sy + 12, px + 8, sy + 24], start=0, end=180,
                 fill=GOLD, width=2)
     cnv.rectangle([sx - 9, y1 - 16, sx + 9, y1 - 13], fill=INK)
-    callout(cnv, x0, y1, "FILED 2019 · THE HAGUE")
+    callout(cnv, x0, y1, "9–6 · GENOCIDE RULED")
 
 
 def scene_cyclone(cnv, box):
@@ -374,10 +374,10 @@ def scene_cyclone(cnv, box):
              (x0 + w * 0.52, y1)]
     cnv.polygon(coast, fill=_hex("e5d29a"))
     cnv.line(coast[1:], fill=_hex("b89b57"), width=2)
-    put(cnv, x0 + 8, y0 + h * 0.36, "ODISHA", F(SANS_B, 9), fill=_hex("7a6428"))
+    put(cnv, x0 + 8, y0 + 2, "ODISHA", F(SANS_B, 9), fill=_hex("ffffff"))
     # cyclone spiral over the sea
-    cx, cy = x0 + w * 0.72, y0 + h * 0.46
-    for rad, start in ((26, 20), (19, 150), (12, 280)):
+    cx, cy = x0 + w * 0.64, y0 + h * 0.50
+    for rad, start in ((20, 20), (15, 150), (10, 280)):
         cnv.arc([cx - rad, cy - rad * 0.72, cx + rad, cy + rad * 0.72],
                 start=start, end=start + 235, fill=_hex("ffffff"), width=3)
     cnv.ellipse([cx - 3, cy - 3, cx + 3, cy + 3], fill=NAVY)
@@ -391,7 +391,7 @@ def scene_cyclone(cnv, box):
         px = cx + (x0 + w * 0.34 - cx) * t
         py = cy + (y0 + h * 0.66 - cy) * t
         cnv.ellipse([px - 2, py - 2, px + 2, py + 2], fill=RED)
-    callout(cnv, x0, y1, "LANDFALL FRI · NOON")
+    callout(cnv, x0, y1, "105,304 IN SHELTERS")
 
 
 def scene_children(cnv, box):
@@ -435,21 +435,21 @@ def scene_cop(cnv, box):
     cnv.line([cx - r, cy, cx + r, cy], fill=NAVY, width=1)
     # two rival text blocks, split by a jagged line
     bx = x0 + w * 0.55
-    cnv.rectangle([bx, y0 + 8, bx + w * 0.19, y0 + h * 0.52],
+    cnv.rectangle([bx, y0 + 8, bx + w * 0.19, y0 + h * 0.40],
                   fill=_hex("fbf7ea"), outline=INK, width=1)
-    cnv.rectangle([bx + w * 0.23, y0 + 8, bx + w * 0.42, y0 + h * 0.52],
+    cnv.rectangle([bx + w * 0.23, y0 + 8, bx + w * 0.42, y0 + h * 0.40],
                   fill=_hex("fbf7ea"), outline=INK, width=1)
-    for i in range(3):
-        cnv.line([bx + 4, y0 + 15 + i * 7, bx + w * 0.19 - 4,
-                  y0 + 15 + i * 7], fill=GREY, width=2)
-        cnv.line([bx + w * 0.23 + 4, y0 + 15 + i * 7, bx + w * 0.42 - 4,
-                  y0 + 15 + i * 7], fill=GREY, width=2)
+    for i in range(2):
+        cnv.line([bx + 4, y0 + 13 + i * 5, bx + w * 0.19 - 4,
+                  y0 + 13 + i * 5], fill=GREY, width=2)
+        cnv.line([bx + w * 0.23 + 4, y0 + 13 + i * 5, bx + w * 0.42 - 4,
+                  y0 + 13 + i * 5], fill=GREY, width=2)
     cnv.line([bx + w * 0.21, y0 + 6, bx + w * 0.20, y0 + h * 0.34],
              fill=RED, width=2)
     cnv.line([bx + w * 0.20, y0 + h * 0.34, bx + w * 0.22, y0 + h * 0.54],
              fill=RED, width=2)
-    put(cnv, bx, y0 + h * 0.60, "2 RIVAL CLAUSES", F(SANS_B, 9), fill=RED)
-    callout(cnv, x0, y1, "CLOSES FRIDAY")
+    put(cnv, bx, y0 + h * 0.68, "DRAFT: 144 TO 80", F(SANS_B, 8), fill=RED)
+    callout(cnv, x0, y1, "$120BN GOAL CUT")
 
 
 def scene_cricket(cnv, box):
@@ -534,10 +534,193 @@ def scene_twotwo(cnv, box):
     callout(cnv, x0, y1, "2+2 DIALOGUE")
 
 
+def scene_riyadh(cnv, box):
+    x0, y0, x1, y1 = box
+    w, h = x1 - x0, y1 - y0
+    cnv.rectangle(box, fill=_hex("1b2340"))
+    for i in range(12):
+        sx = x0 + w * ((i * 37) % 100) / 100
+        sy = y0 + h * ((i * 53) % 55) / 100
+        cnv.ellipse([sx, sy, sx + 1.5, sy + 1.5], fill=_hex("ffffff"))
+    base = y0 + h * 0.72
+    for fx, fh in ((0.06, 0.5), (0.16, 0.7), (0.28, 0.45), (0.40, 0.8),
+                   (0.62, 0.55), (0.74, 0.9), (0.86, 0.6)):
+        tx = x0 + fx * w
+        cnv.rectangle([tx, base - fh * h * 0.6, tx + w * 0.07, base],
+                      fill=_hex("0e1424"))
+    cnv.rectangle([x0, base, x1, y1], fill=_hex("0e1424"))
+    mx, my = x0 + w * 0.68, y0 + h * 0.30
+    cnv.line([x0 + w * 0.30, y0 + h * 0.62, mx, my], fill=GOLD_L, width=2)
+    for ang in range(0, 360, 45):
+        cnv.line([mx + 4 * math.cos(math.radians(ang)),
+                  my + 4 * math.sin(math.radians(ang)),
+                  mx + 8 * math.cos(math.radians(ang)),
+                  my + 8 * math.sin(math.radians(ang))], fill=RED, width=2)
+    cnv.ellipse([mx - 3, my - 3, mx + 3, my + 3], fill=GOLD_L)
+    callout(cnv, x0, y1, "SIRENS 04:42")
+
+
+def scene_suneung(cnv, box):
+    x0, y0, x1, y1 = box
+    w, h = x1 - x0, y1 - y0
+    cnv.rectangle(box, fill=_hex("e8e2d2"))
+    cnv.rectangle([x0, y0 + h * 0.62, x1, y1], fill=_hex("c9bfa4"))
+    cx, cy = x0 + w * 0.60, y0 + h * 0.28
+    cnv.ellipse([cx - 8, cy - 8, cx + 8, cy + 8], fill=_hex("fbf7ea"),
+                outline=INK, width=1)
+    cnv.line([cx, cy, cx, cy - 5], fill=INK, width=1)
+    cnv.line([cx, cy, cx + 4, cy + 2], fill=INK, width=1)
+    for r in range(2):
+        for c in range(5):
+            dx = x0 + w * (0.08 + c * 0.18)
+            dy = y0 + h * (0.42 + r * 0.26)
+            cnv.rectangle([dx, dy, dx + w * 0.13, dy + 5], fill=_hex("8a6f4d"))
+            cnv.ellipse([dx + w * 0.045, dy - 12, dx + w * 0.085, dy - 4],
+                        fill=_hex("33475e"))
+            cnv.rectangle([dx + w * 0.02, dy - 4, dx + w * 0.11, dy + 2],
+                          fill=_hex("fbf7ea"))
+    callout(cnv, x0, y1, "551,864 CANDIDATES")
+
+
+def scene_greenland(cnv, box):
+    x0, y0, x1, y1 = box
+    w, h = x1 - x0, y1 - y0
+    cnv.rectangle(box, fill=_hex("bcd6e2"))
+    cnv.polygon([(x0 + w * 0.08, y0 + h * 0.15), (x0 + w * 0.30, y0 + h * 0.10),
+                 (x0 + w * 0.42, y0 + h * 0.35), (x0 + w * 0.34, y0 + h * 0.70),
+                 (x0 + w * 0.16, y0 + h * 0.62), (x0 + w * 0.06, y0 + h * 0.40)],
+                fill=_hex("f4f8fa"), outline=_hex("7fa3bd"))
+    fx, fy = x0 + w * 0.50, y0 + h * 0.14
+    cnv.rectangle([fx, fy, fx + w * 0.26, fy + h * 0.30], fill=RED)
+    cnv.rectangle([fx + w * 0.08, fy, fx + w * 0.12, fy + h * 0.30],
+                  fill=_hex("ffffff"))
+    cnv.rectangle([fx, fy + h * 0.12, fx + w * 0.26, fy + h * 0.18],
+                  fill=_hex("ffffff"))
+    cnv.rectangle([x0 + w * 0.50, y0 + h * 0.52, x1 - 8, y0 + h * 0.86],
+                  fill=_hex("1e8449"))
+    put(cnv, x0 + w * 0.51, y0 + h * 0.55, "109–0", F(SANS_B, 9),
+        fill=_hex("ffffff"))
+    callout(cnv, x0, y1, "109–0 IN FOLKETING")
+
+
+def scene_court(cnv, box):
+    x0, y0, x1, y1 = box
+    w, h = x1 - x0, y1 - y0
+    cnv.rectangle(box, fill=_hex("ddd5bd"))
+    cx = x0 + w * 0.30
+    cnv.polygon([(cx - w * 0.24, y0 + h * 0.30), (cx + w * 0.24, y0 + h * 0.30),
+                 (cx, y0 + h * 0.08)], fill=NAVY)
+    for i in range(4):
+        px = cx - w * 0.20 + i * w * 0.13
+        cnv.rectangle([px, y0 + h * 0.32, px + w * 0.05, y0 + h * 0.78],
+                      fill=_hex("fbf7ea"), outline=NAVY, width=1)
+    cnv.rectangle([cx - w * 0.26, y0 + h * 0.78, cx + w * 0.26, y0 + h * 0.86],
+                  fill=NAVY)
+    gx, gy = x0 + w * 0.74, y0 + h * 0.55
+    cnv.rectangle([gx - 14, gy - 5, gx + 14, gy + 5], fill=_hex("8a6f4d"))
+    cnv.line([gx, gy + 5, gx + 12, gy + 16], fill=_hex("8a6f4d"), width=3)
+    put(cnv, x0 + w * 0.56, y0 + h * 0.10, "9–3", F(SERIF_BLK, 15), fill=RED)
+    callout(cnv, x0, y1, "RETRIAL ORDERED")
+
+
+def scene_strike(cnv, box):
+    x0, y0, x1, y1 = box
+    w, h = x1 - x0, y1 - y0
+    cnv.rectangle(box, fill=_hex("dfe8ee"))
+    cnv.rectangle([x0, y0 + h * 0.66, x1, y1], fill=_hex("9db3c2"))
+    for i, (fx, col) in enumerate(((0.06, RED), (0.24, NAVY), (0.42, RED),
+                                   (0.60, NAVY))):
+        px = x0 + w * fx
+        cnv.line([px + w * 0.06, y0 + h * 0.30, px + w * 0.06,
+                  y0 + h * 0.62], fill=_hex("3c4652"), width=2)
+        cnv.rectangle([px, y0 + h * 0.12, px + w * 0.13, y0 + h * 0.30],
+                      fill=_hex("fbf7ea"), outline=col, width=2)
+        cnv.line([px + 3, y0 + h * 0.20, px + w * 0.13 - 3, y0 + h * 0.20],
+                 fill=col, width=2)
+    for i in range(7):
+        hx = x0 + w * (0.06 + i * 0.14)
+        cnv.ellipse([hx - 5, y0 + h * 0.66, hx + 5, y0 + h * 0.76],
+                    fill=_hex("33475e"))
+    callout(cnv, x0, y1, "NATIONAL STRIKE")
+
+
+def scene_flood(cnv, box):
+    x0, y0, x1, y1 = box
+    w, h = x1 - x0, y1 - y0
+    cnv.rectangle(box, fill=_hex("8fa9ba"))
+    # houses, half-submerged
+    for fx, fw, fh in ((0.08, 0.26, 0.42), (0.42, 0.26, 0.50)):
+        hx = x0 + w * fx
+        top = y0 + h * 0.72 - fh * h
+        cnv.rectangle([hx, top, hx + w * fw, y0 + h * 0.72],
+                      fill=_hex("e8dcc0"), outline=_hex("8a8272"), width=1)
+        cnv.polygon([(hx - 3, top),
+                     (hx + w * fw / 2, top - 5),
+                     (hx + w * fw + 3, top)],
+                    fill=_hex("b03a4b"))
+    cnv.rectangle([x0, y0 + h * 0.62, x1, y1], fill=_hex("4a7396"))
+    for i in range(4):
+        wy = y0 + h * (0.68 + i * 0.08)
+        cnv.line([x0 + 8 + (i % 2) * 20, wy, x0 + 70 + (i % 2) * 20, wy],
+                 fill=_hex("7fa3bd"), width=1)
+    for i in range(8):
+        rx = x0 + w * (0.05 + 0.12 * i)
+        cnv.line([rx, y0 + 4, rx - 3, y0 + 14], fill=_hex("d7e6f0"), width=1)
+    callout(cnv, x0, y1, "15.3 IN · ONE DAY")
+
+
+def scene_law(cnv, box):
+    x0, y0, x1, y1 = box
+    w, h = x1 - x0, y1 - y0
+    cnv.rectangle(box, fill=_hex("e6ddc8"))
+    cx = x0 + w * 0.32
+    cnv.rectangle([cx - w * 0.20, y0 + h * 0.45, cx + w * 0.20, y0 + h * 0.80],
+                  fill=_hex("fbf7ea"), outline=NAVY, width=1)
+    cnv.pieslice([cx - w * 0.14, y0 + h * 0.10, cx + w * 0.14, y0 + h * 0.50],
+                 start=180, end=360, fill=NAVY)
+    cnv.rectangle([cx - w * 0.26, y0 + h * 0.80, cx + w * 0.26, y0 + h * 0.88],
+                  fill=NAVY)
+    dx, dy = x0 + w * 0.56, y0 + h * 0.34
+    cnv.rectangle([dx, dy, dx + w * 0.21, dy + h * 0.55], fill=_hex("ffffff"),
+                  outline=INK, width=1)
+    for i in range(2):
+        cnv.line([dx + 4, dy + 5 + i * 6, dx + w * 0.21 - 4, dy + 5 + i * 6],
+                 fill=GREY, width=1)
+    cnv.ellipse([dx + w * 0.06, dy + h * 0.36, dx + w * 0.14, dy + h * 0.50],
+                fill=RED)
+    callout(cnv, x0, y1, "AFTER 18 YEARS")
+
+
+def scene_gaza(cnv, box):
+    x0, y0, x1, y1 = box
+    w, h = x1 - x0, y1 - y0
+    cnv.rectangle(box, fill=_hex("d8cbb0"))
+    cnv.rectangle([x0, y0 + h * 0.60, x1, y1], fill=_hex("b09a72"))
+    cnv.rectangle([x0, y0 + h * 0.66, x1, y0 + h * 0.86], fill=_hex("5c6066"))
+    for i in range(6):
+        sx = x0 + w * (0.03 + i * 0.16)
+        cnv.rectangle([sx, y0 + h * 0.74, sx + w * 0.08, y0 + h * 0.78],
+                      fill=_hex("f6f1e5"))
+    tx, ty = x0 + w * 0.55, y0 + h * 0.52
+    cnv.rectangle([tx - 22, ty - 8, tx + 22, ty + 6], fill=_hex("3c4652"))
+    cnv.rectangle([tx - 14, ty - 16, tx + 6, ty - 8], fill=_hex("3c4652"))
+    cnv.line([tx + 6, ty - 12, tx + 26, ty - 12], fill=_hex("3c4652"),
+             width=3)
+    for i in range(5):
+        cnv.ellipse([tx - 20 + i * 8, ty + 6, tx - 14 + i * 8, ty + 12],
+                    fill=_hex("1c2126"))
+    cnv.line([x0 + w * 0.12, y0 + h * 0.18, x0 + w * 0.12, y0 + h * 0.60],
+             fill=_hex("3c4652"), width=2)
+    cnv.rectangle([x0 + w * 0.12, y0 + h * 0.18, x0 + w * 0.24, y0 + h * 0.30],
+                  fill=_hex("ffffff"), outline=RED, width=1)
+    callout(cnv, x0, y1, "RAID OVER")
+
+
 # ---------------------------------------------------------------------------
 # Dot-matrix world map. Coastline polygons (lon/lat outlines, the house
 # data set from the sibling editions) are rasterised into a dot grid by
-# point-in-polygon tests; numbered pins mark panels 1-10.
+# point-in-polygon tests; numbered pins mark panels 1-15 (panel 3,
+# GTA VI, is worldwide and unpinned; Seoul carries pins 9 and 11).
 # ---------------------------------------------------------------------------
 
 def _parse_poly(raw):
@@ -591,16 +774,20 @@ def _inside(lon, lat, poly):
 
 # (number, lon, lat, dx, dy, region)
 PINS = [
-    (1, -81, 27, 0, 0, "global"),
-    (2, 114, 23, -5, -5, "asia"),
-    (3, -74, 41, 0, 0, "americas"),
-    (4, 37, 45, 2, -2, "europe"),
-    (5, 4, 52, -3, 0, "global"),
-    (6, 86, 20, 0, 0, "asia"),
-    (7, 36, 31, 5, 3, "global"),
-    (8, 31, 37, -5, -3, "global"),
-    (9, 175, -41, 0, 0, "oceania"),
-    (10, 114, 23, 12, 8, "asia"),
+    (1, 114, 23, 0, 0, "asia"),
+    (2, 4, 52, -10, -6, "europe"),
+    (4, 31, 37, -10, 8, "europe"),
+    (5, 37, 45, 8, -10, "europe"),
+    (6, 47, 25, 6, -8, "mideast"),
+    (7, 86, 20, 0, 0, "asia"),
+    (8, -74, 41, 8, -6, "americas"),
+    (9, 127, 37, -10, -6, "asia"),
+    (10, 12, 56, 10, 6, "europe"),
+    (11, 127, 37, 12, 6, "asia"),
+    (12, -74, 5, 0, 0, "americas"),
+    (13, -81, 27, -8, 6, "americas"),
+    (14, 107, -6, 0, 0, "asia"),
+    (15, 34, 31, 12, 10, "mideast"),
 ]
 
 
@@ -657,101 +844,122 @@ FIELD_COLOR = {
 }
 
 TOP = [
-    (1, "global", "culture", "GLOBAL · GAMES", "BBC", "CONFIRMED",
-     scene_gta, "GTA VI is out: the world enters Vice City",
-     "Thirteen years after GTA V, Rockstar's crime epic unlocks time "
-     "zone by time zone — the Americas and Europe get in on Thursday."),
-    (2, "asia", "diplomacy", "ASIA · DIPLOMACY", "REUTERS · NYT",
+    (1, "asia", "diplomacy", "ASIA · DIPLOMACY", "REUTERS · NYT · CFR",
      "CONFIRMED", scene_summit,
      "Trump, Xi and Putin hold first trilateral talks",
-     "One hour at Shenzhen's Kylin Villa, on the APEC sidelines: "
-     "nuclear arms, Ukraine and Iran — and no agreement expected."),
-    (3, "americas", "business", "AMERICAS · BUSINESS", "CNBC",
-     "CONFIRMED", scene_ipo,
-     "Anthropic opens on Nasdaq in record $81.3bn sale",
-     "Priced at $83, above its range, the Claude maker's shares begin "
-     "trading as ANT — the largest offering on record."),
+     "Four-point peace declaration: UN reform, fuel supply, ICC "
+     "consent, nuclear-risk talks. Not Ukraine or Iran."),
+    (2, "europe", "politics", "GLOBAL · COURTS", "ICJ · BBC",
+     "CONFIRMED", scene_icj,
+     "Myanmar committed genocide, World Court rules",
+     "Judges rule 9–6: Myanmar committed genocide against the "
+     "Rohingya. Reparations ordered; safe return to follow."),
+    (3, "global", "culture", "GLOBAL · GAMES", "BBC · SENSOR TOWER",
+     "CONFIRMED", scene_gta, "GTA VI is out: the world enters Vice City",
+     "Thirteen years after GTA V, Vice City returns: 99 on "
+     "Metacritic, 17.1m pre-orders, $1.65bn in sales."),
 ]
 
 MINI_A = [
-    (4, "europe", "war", "EUROPE · UKRAINE WAR", "REUTERS", "CLAIM",
+    (4, "europe", "climate", "GLOBAL · CLIMATE", "REUTERS", "CONFIRMED",
+     scene_cop, "COP31 draft drops fossil fuels and $120bn aid goal",
+     "Slimmed text, 144 to 80 paragraphs; $120bn goal cut. A 35% "
+     "clean-power goal stays."),
+    (5, "europe", "war", "EUROPE · UKRAINE WAR", "REUTERS", "CLAIM",
      scene_bridge, "Crimean Bridge hit a third time in a week",
-     "A fresh overnight strike halts traffic again, Crimea's "
-     "Russian-installed governor says; damage is still being assessed."),
-    (5, "global", "politics", "GLOBAL · COURTS", "ICJ · BBC", "CONFIRMED",
-     scene_icj, "World Court delivers Myanmar genocide verdict",
-     "Seven years after The Gambia filed, judges in The Hague decide "
-     "whether Myanmar committed genocide against the Rohingya."),
-    (6, "asia", "climate", "ASIA · WEATHER", "IMD", "FORECAST",
-     scene_cyclone, "Akvan nears Odisha: 47,000 moved to safety",
-     "Schools shut in six districts as the severe cyclone closes in; "
-     "landfall is due near Puri at noon on Friday, gusts to 110 km/h."),
-    (7, "global", "society", "GLOBAL · SOCIETY", "RELIEFWEB", "CONFIRMED",
-     scene_children, "Nearly 1 in 4 children now live in war zones",
-     "A record 589 million children — 23.4% of the world's total — "
-     "live in conflict zones, Save the Children finds."),
+     "Overnight strike halts traffic again, the governor says; "
+     "damage still being assessed."),
+    (6, "mideast", "war", "MIDDLE EAST · SECURITY", "REUTERS", "CLAIM",
+     scene_riyadh, "Saudis shoot down Houthi missiles over Riyadh",
+     "Coalition 'dealt with' the threat; debris fell on Riyadh, "
+     "four more missiles stopped."),
+    (7, "asia", "climate", "ASIA · WEATHER", "IMD · PTI", "FORECAST",
+     scene_cyclone, "Cyclone Akvan nears India: 105,304 moved to safety",
+     "105,304 in 1,224 shelters; schools shut in six districts. "
+     "Landfall due Friday noon."),
 ]
 
 MINI_B = [
-    (8, "global", "climate", "GLOBAL · CLIMATE", "REUTERS", "CONFIRMED",
-     scene_cop, "COP31 enters final two days, still split",
-     "Closing plenaries open in Antalya with two rival fossil-fuel "
-     "clauses unresolved; a new draft is due and the summit ends Friday."),
-    (9, "oceania", "culture", "OCEANIA · SPORT", "CRICBUZZ", "CONFIRMED",
-     scene_cricket, "India open Test series in Wellington",
-     "The first Test against New Zealand starts at the Basin Reserve — "
-     "India's first Test tour there in six years, WTC points at stake."),
-    (10, "asia", "diplomacy", "ASIA · TRADE", "XINHUA", "CONFIRMED",
-     scene_apec, "Xi opens APEC summit with $20m pledge",
-     "China offers $20 million for APEC projects and pushes a Free "
-     "Trade Area of the Asia-Pacific; Putin backs the Shenzhen draft."),
-    (11, "asia", "war", "ASIA · DEFENCE", "PTI", "CONFIRMED",
-     scene_twotwo, "India and Japan hold 2+2 defence talks",
-     "The two countries review defence ties and strategic cooperation, "
-     "as Jaishankar says trusted partnerships matter more than ever."),
+    (8, "americas", "business", "AMERICAS · BUSINESS", "CNBC",
+     "CONFIRMED", scene_ipo,
+     "Anthropic starts trading after record $81.3bn sale",
+     "Priced $83, 980m shares — the largest IPO ever, passing "
+     "SpaceX. Ticker ANT."),
+    (9, "asia", "society", "ASIA · SOCIETY", "YONHAP", "CONFIRMED",
+     scene_suneung, "551,864 sit South Korea's big exam",
+     "Suneung runs 08:40–17:45 at 1,312 centres; flights paused, "
+     "22 caught with phones."),
+    (10, "europe", "politics", "EUROPE · POLITICS", "AP", "CONFIRMED",
+     scene_greenland, "Denmark backs Arctic pact with US, 109–0",
+     "Vote backs more US bases and Pituffik expansion; Greenland "
+     "keeps sovereignty."),
+    (11, "asia", "politics", "ASIA · COURTS", "AP · YONHAP", "CONFIRMED",
+     scene_court, "Korea's top court overturns ex-PM Han's term",
+     "9–3: no proof Han aided Yoon's martial-law bid. Retrial "
+     "ordered; Han stays in custody."),
+]
+
+MINI_C = [
+    (12, "americas", "society", "AMERICAS · SOCIETY", "INFOBAE",
+     "CONFIRMED", scene_strike, "Colombia's unions hold national strike",
+     "Unions, teachers and Indigenous groups march in five cities "
+     "against the rescue law."),
+    (13, "americas", "climate", "AMERICAS · WEATHER", "AP · NWS",
+     "CONFIRMED", scene_flood, "Floods shut South Florida schools again",
+     "Up to 15.3 inches near Plantation; Broward closes a second "
+     "day and Miami-Dade joins."),
+    (14, "asia", "politics", "ASIA · POLITICS", "ANTARA · DPR",
+     "CONFIRMED", scene_law,
+     "Indonesia passes asset-seizure law after 18 years",
+     "Passed 09:30 WIB; state may seize assets over Rp1bn without "
+     "a conviction."),
+    (15, "mideast", "war", "MIDDLE EAST · WAR", "REUTERS", "CLAIM",
+     scene_gaza, "Israel says its Gaza tank raid is over",
+     "Army ends the raid past the truce line — first ground "
+     "incursion since the ceasefire."),
 ]
 
 ALSO = [
-    (12, "americas", "diplomacy", "Ottawa: Carney adjusts China ties, seeks right US deal"),
-    (13, "americas", "war", "US senators warn AI cyber threats outpace defences"),
-    (14, "mideast", "climate", "Saudi Arabia: danger passed in three southern cities"),
-    (15, "asia", "business", "Trump tells APEC he opposes global AI regulation"),
-    (16, "global", "culture", "2.4m watch GTA VI on Twitch in its first hour live"),
-    (17, "americas", "culture", "US Army offers soldiers a four-day pass to play GTA VI"),
-    (18, "global", "science", "Study: nearly all coral reefs threatened within 50 years"),
-    (19, "asia", "society", "Three workers die at NTPC plant in Jharkhand"),
-    (20, "asia", "war", "LeT commander killed in J&K encounter, army says"),
-    (21, "asia", "politics", "Air India crash probe nears completion"),
-    (22, "asia", "climate", "India's renewable capacity stands at 299.25 GW"),
-    (23, "global", "business", "Oil falls as supply improves, stockpiles build"),
-    (24, "global", "science", "Bacterial toxin linked to early-onset bowel cancer rise"),
-    (25, "europe", "science", "ESA chief calls for binding space laws"),
-    (26, "americas", "war", "Reports: outage hits NSA internal networks"),
-    (27, "americas", "politics", "House Democrats order Trump allies to preserve records"),
-    (28, "europe", "diplomacy", "EU pauses long-term UK talks over Brexit stance"),
-    (29, "americas", "society", "BBC investigates new abuse claims at McDonald's"),
-    (30, "mideast", "war", "USS Theodore Roosevelt arrives in the Middle East"),
-    (31, "americas", "diplomacy", "US panel urges China sanctions over Panama-flagged ships"),
-    (32, "asia", "politics", "Congress targets Modi govt on inflation, seeks white paper"),
-    (33, "asia", "society", "Murmu: 50 crore Indians out of extreme poverty"),
-    (34, "asia", "society", "Delhi-NCR schools reopen as GRAP-III curbs revoked"),
-    (35, "asia", "business", "Goldman ups India to overweight; Nifty target 28,500"),
-    (36, "asia", "business", "India slaps 162.5% duty on bulk Scotch imports"),
-    (37, "asia", "business", "Air India Express names Rajawat CEO from 1 Dec"),
-    (38, "europe", "politics", "France: minister says Mélenchon could win presidency"),
-    (39, "asia", "politics", "Delhi court: charges for 14 in NEET-UG leak case"),
-    (40, "asia", "culture", "Sports Ministry forms 14-member league committee"),
-    (41, "americas", "business", "Tech outages no coincidence, AI aids attacks: Arora"),
-    (42, "asia", "business", "Tata Steel CEO: Chinese imports still a threat"),
-    (43, "asia", "business", "Reliance seeks satellite capacity to rival Starlink"),
-    (44, "asia", "climate", "Odisha opens 448 cyclone shelters; ₹20.5 crore released"),
+    (16, "global", "society", "Save the Children: 589m children in conflict zones"),
+    (17, "oceania", "culture", "India v New Zealand, 1st Test, begins in Wellington"),
+    (18, "asia", "diplomacy", "India–Japan 2+2 ministerial dialogue"),
+    (19, "asia", "diplomacy", "Xi opens APEC leaders' meeting; $20m pledge"),
+    (20, "africa", "culture", "Kenya: marathon champion Jepchirchir banned 3 years"),
+    (21, "oceania", "business", "Australia jobless 4.9%, a 5-year high; 43,500 jobs lost"),
+    (22, "mideast", "diplomacy", "Somalia expels UAE ambassador; 72 hours to leave"),
+    (23, "africa", "politics", "Sudan court sentences absent RSF chief Hemedti to death"),
+    (24, "europe", "culture", "Author Corrado Augias dies at 91"),
+    (25, "oceania", "politics", "NZ High Court: pay-equity cuts broke rights law"),
+    (26, "europe", "society", "Canary Islands: 11,000 migrants in 15 days, a record"),
+    (27, "oceania", "society", "Tonga declares drought state of emergency, 27 days"),
+    (28, "oceania", "climate", "Cyclone Xavier eases to category 4 over Cook Islands"),
+    (29, "global", "science", "Red giant seen swallowing a companion star"),
+    (30, "africa", "business", "South Africa holds rate at 7.25%, 4–3 split"),
+    (31, "americas", "diplomacy", "Carney: Canada adjusts China ties, seeks right US deal"),
+    (32, "americas", "war", "US senators warn AI cyber threats outpace defences"),
+    (33, "americas", "business", "Trump tells APEC he opposes global AI regulation"),
+    (34, "americas", "culture", "US Army offers soldiers four-day pass to play GTA VI"),
+    (35, "asia", "society", "Three workers die at NTPC plant, Jharkhand"),
+    (36, "asia", "war", "LeT commander killed in J&K encounter"),
+    (37, "asia", "business", "Air India crash probe nears completion"),
+    (38, "americas", "politics", "House Democrats order Trump allies to preserve records"),
+    (39, "europe", "diplomacy", "EU pauses long-term UK talks pending Brexit stance"),
+    (40, "europe", "society", "BBC: abuse investigation at McDonald's"),
+    (41, "mideast", "war", "USS Theodore Roosevelt arrives in the Middle East"),
+    (42, "americas", "diplomacy", "US panel urges China sanctions over Panama ships"),
+    (43, "asia", "politics", "Congress targets Modi govt over inflation"),
+    (44, "asia", "society", "Murmu: 50 crore Indians out of extreme poverty"),
+    (45, "asia", "society", "Delhi-NCR schools resume as GRAP-III curbs revoked"),
+    (46, "asia", "business", "India imposes 162.5% duty on bulk Scotch imports"),
 ]
 
 STATS = [
-    ("$81.3bn", "largest share sale ever — lists today"),
-    ("589m", "children in conflict zones, a record"),
-    ("47,000", "evacuated in Odisha ahead of Akvan"),
-    ("299.25 GW", "India's renewable capacity, govt says"),
+    ("3", "presidents at one table"),
+    ("9–6", "World Court genocide vote"),
+    ("$120bn", "aid goal cut at COP31"),
+    ("$81.3bn", "Anthropic's record IPO"),
+    ("109–0", "Danish vote on Arctic pact"),
+    ("4.9%", "Australian jobless rate"),
 ]
 
 
@@ -763,7 +971,7 @@ def render_panel(cnv, box, spec, big):
     num, region, _field, kicker, source, tag, scene, head, deck = spec
     x0, y0, x1, y1 = box
     cnv.rectangle(box, fill=PANEL_BG, outline=RULE, width=1)
-    art_h = 68 if big else 54
+    art_h = 50 if big else 32
     scene(cnv, (x0 + 1, y0 + 1, x1 - 1, y0 + art_h))
     # certainty stamp on the art, top right
     tag_chip(cnv, x1 - 6, y0 + 11, tag)
@@ -771,17 +979,17 @@ def render_panel(cnv, box, spec, big):
     inner_w = (x1 - x0) - 16
     tx = x0 + 8
     ty = y0 + art_h + 5
-    chip = 20 if big else 17
+    chip = 20 if big else 15
     num_chip(cnv, tx + chip // 2, ty + chip // 2, num, chip, GOLD, NAVY)
     put(cnv, tx + chip + 6, ty + (3 if big else 2), kicker,
         F(SANS_B, 11 if big else 9), fill=REGION[region])
     put_r(cnv, x1 - 8, ty + (3 if big else 2), source,
           F(SANS_B, 8), fill=GREY)
-    ty += chip + 4
-    hfont = fit_font(cnv, head, SERIF_B, inner_w, 2, 18 if big else 15, 11)
+    ty += chip + 3
+    hfont = fit_font(cnv, head, SERIF_B, inner_w, 2, 18 if big else 14, 10)
     ty = paint_lines(cnv, tx, ty, wrap(cnv, head, hfont, inner_w), hfont,
                      int(hfont.size * 1.16))
-    dfont = fit_font(cnv, deck, SANS, inner_w, 3, 10.5 if big else 10, 8.5)
+    dfont = fit_font(cnv, deck, SANS, inner_w, 2, 10.5 if big else 9.5, 8)
     paint_lines(cnv, tx, ty + 2, wrap(cnv, deck, dfont, inner_w), dfont,
                 int(dfont.size * 1.32), fill=_hex("33383e"))
 
@@ -803,9 +1011,9 @@ def masthead(cnv):
     put(cnv, 88, 72,
         "Everything on this page happened, or was first reported, on "
         "Thursday 19 November 2026.", F(SERIF_I, 12), fill=CREAM)
-    put_r(cnv, PAGE - EDGE, 12, "44 STORIES", F(SERIF_B, 17),
+    put_r(cnv, PAGE - EDGE, 12, "46 STORIES", F(SERIF_B, 17),
           fill=_hex("ffffff"))
-    put_r(cnv, PAGE - EDGE, 36, "6 REGIONS · ONE PAGE", F(SANS_B, 10),
+    put_r(cnv, PAGE - EDGE, 36, "7 REGIONS · ONE PAGE", F(SANS_B, 10),
           fill=GOLD_L)
     put_r(cnv, PAGE - EDGE - 196, 66, "HOW SURE:", F(SANS_B, 8), fill=CREAM)
     x = PAGE - EDGE
@@ -816,7 +1024,7 @@ def masthead(cnv):
 
 def taxonomy(cnv):
     counts = {}
-    for spec in TOP + MINI_A + MINI_B:
+    for spec in TOP + MINI_A + MINI_B + MINI_C:
         counts[spec[2]] = counts.get(spec[2], 0) + 1
     for _n, _r, field, _t in ALSO:
         counts[field] = counts.get(field, 0) + 1
@@ -831,25 +1039,27 @@ def taxonomy(cnv):
         w = SPAN * count / total
         cnv.rectangle([x, y0, x + w - 2, y1], fill=FIELD_COLOR[field])
         label = f"{short[field]} {count}"
-        font = fit_font(cnv, label, SANS_B, w - 8, 1, 9, 7)
-        put(cnv, x + (w - 2) / 2, y0 + 10, label, font,
-            fill=_hex("ffffff"), anchor="mm")
+        if tw(cnv, label, F(SANS_B, 7)) <= w - 4:
+            font = fit_font(cnv, label, SANS_B, w - 8, 1, 9, 7)
+            put(cnv, x + (w - 2) / 2, y0 + 10, label, font,
+                fill=_hex("ffffff"), anchor="mm")
         x += w
 
 
 def timeline(cnv):
-    y = 130
-    put(cnv, EDGE, y, "THE DAY IN UTC", F(SANS_B, 10), fill=NAVY)
-    items = ["OVERNIGHT Kerch Bridge hit again",
-             "04:45 Trump–Xi sit down",
-             "06:30 first trilateral talks",
-             "09:00 ICJ verdict read",
-             "14:30 ANT opens on Nasdaq",
-             "FRI 06:30 Akvan landfall due"]
+    put(cnv, EDGE, 126, "THE DAY BY HOURS — LOCAL TIME, IN ORDER",
+        F(SANS_B, 10), fill=NAVY)
+    items = ["00:00 AUCKLAND GTA VI unlocks",
+             "04:42 RIYADH air-raid sirens",
+             "08:40 SEOUL exam begins",
+             "09:30 JAKARTA law passed",
+             "10:00 THE HAGUE genocide ruling",
+             "14:30 SHENZHEN three leaders meet",
+             "09:30 NEW YORK market opens"]
     text = "   ·   ".join(items)
-    font = fit_font(cnv, text, SANS, SPAN - 118, 1, 10.5, 8)
-    put(cnv, EDGE + 118, y, text, font, fill=_hex("33383e"))
-    cnv.line([EDGE, y + 17, PAGE - EDGE, y + 17], fill=RULE, width=1)
+    font = fit_font(cnv, text, SANS, SPAN, 1, 10, 8)
+    put(cnv, EDGE, 140, text, font, fill=_hex("33383e"))
+    cnv.line([EDGE, 156, PAGE - EDGE, 156], fill=RULE, width=1)
 
 
 def bottom_left(cnv):
@@ -857,24 +1067,27 @@ def bottom_left(cnv):
            tracking=1)
     cnv.line([EDGE, 696, EDGE + 342, 696], fill=INK, width=2)
     paint_map(cnv, (EDGE, 704, EDGE + 342, 856))
-    legend = [("Europe", "europe"), ("Asia", "asia"),
-              ("Americas", "americas"), ("Middle East", "mideast"),
-              ("Oceania", "oceania"), ("Global", "global")]
-    lx = EDGE
-    for name, key in legend:
-        cnv.ellipse([lx, 864, lx + 8, 872], fill=REGION[key])
-        put(cnv, lx + 12, 862, name, F(SANS, 9.5))
-        lx += 16 + tw(cnv, name, F(SANS, 9.5)) + 10
-    put(cnv, EDGE, 878,
-        "Pins 1–10. Panel 11 (India–Japan 2+2) is unpinned: venue "
-        "unconfirmed.", F(SANS, 9), fill=GREY)
-    # stats, 2 x 2
+    for row, legend in enumerate((
+            [("Europe", "europe"), ("Asia", "asia"),
+             ("Americas", "americas"), ("Middle East", "mideast")],
+            [("Africa", "africa"), ("Oceania", "oceania"),
+             ("Global", "global")])):
+        lx = EDGE
+        ly = 860 + row * 11
+        for name, key in legend:
+            cnv.ellipse([lx, ly + 2, lx + 8, ly + 10], fill=REGION[key])
+            put(cnv, lx + 12, ly, name, F(SANS, 9.5))
+            lx += 16 + tw(cnv, name, F(SANS, 9.5)) + 10
+    put(cnv, EDGE, 884,
+        "Pins 1–15; no pin for GTA VI (worldwide). Seoul: 9 + 11.",
+        F(SANS, 9), fill=GREY)
+    # stats, 3 x 2
     sy = 896
     for i, (big, cap) in enumerate(STATS):
-        cx = EDGE + (i % 2) * 174
-        cy = sy + (i // 2) * 33
-        put(cnv, cx, cy, big, F(SERIF_B, 16), fill=NAVY)
-        capf = fit_font(cnv, cap, SANS, 168, 1, 8.5, 7)
+        cx = EDGE + (i % 3) * 114
+        cy = sy + (i // 3) * 33
+        put(cnv, cx, cy, big, F(SERIF_B, 15), fill=NAVY)
+        capf = fit_font(cnv, cap, SANS, 108, 1, 8.5, 7)
         put(cnv, cx, cy + 20, cap, capf, fill=GREY)
 
 
@@ -882,18 +1095,40 @@ def bottom_right(cnv):
     x0 = EDGE + 356
     spaced(cnv, x0, 678, "ALSO ON THURSDAY 19 NOVEMBER", F(SANS_B, 13),
            NAVY, tracking=1)
-    put_r(cnv, PAGE - EDGE, 678, "33 MORE STORIES", F(SANS_B, 10), fill=GREY)
+    put_r(cnv, PAGE - EDGE, 678, "31 MORE STORIES", F(SANS_B, 10), fill=GREY)
     cnv.line([x0, 696, PAGE - EDGE, 696], fill=INK, width=2)
     col_w = (PAGE - EDGE - x0 - 16) // 2
-    halves = [ALSO[:17], ALSO[17:]]
+    halves = [ALSO[:16], ALSO[16:]]
     for ci, items in enumerate(halves):
         cx = x0 + ci * (col_w + 16)
         iy = 706
         for num, region, _field, text in items:
             disc(cnv, cx + 8, iy + 6, 7, num, REGION[region])
-            font = fit_font(cnv, text, SANS, col_w - 22, 1, 11, 9)
+            font = fit_font(cnv, text, SANS, col_w - 22, 1, 10.5, 9)
             put(cnv, cx + 21, iy, text, font)
-            iy += 14.8
+            iy += 12.5
+    # three info boxes under the list
+    def info_box(bx0, bx1, title, lines):
+        cnv.rectangle([bx0, 908, bx1, 956], fill=PANEL_BG, outline=RULE,
+                      width=1)
+        put(cnv, bx0 + 6, 912, title, F(SANS_B, 9), fill=NAVY)
+        ly = 924
+        for line in lines:
+            put(cnv, bx0 + 6, ly, line, F(SANS, 8), fill=_hex("33383e"))
+            ly += 10
+    bw = 208
+    info_box(x0, x0 + bw, "THE VERDICT",
+             wrap(cnv, "THE HAGUE · 10:00: Myanmar committed genocide, "
+                  "9 to 6. First state held liable. Must allow return, "
+                  "make reparations.", F(SANS, 8), bw - 12))
+    info_box(x0 + bw + 8, x0 + 2 * bw + 8, "HOW SURE ARE WE?",
+             ["REPORTED = confirmed by named sources",
+              "CLAIM = one side says so, unverified",
+              "FORECAST = poll, draft or schedule"])
+    info_box(x0 + 2 * bw + 16, PAGE - EDGE, "MARKETS & MONEY",
+             ["$83 IPO price (Wed)",
+              "$81.3bn largest IPO on record",
+              "4.9% Australia jobless"])
 
 
 def date_check(cnv):
@@ -903,8 +1138,10 @@ def date_check(cnv):
     title = "DATE CHECK — LEFT OUT ON PURPOSE, FIRST REPORTED BEFORE THURSDAY:  "
     body = ("the EU's €45bn Ukraine loan & Voyager 1's light-day moment "
             "(Wed) · Van Gogh's $190.4m record, sold Wed night in New "
-            "York · Nvidia's results, the Board of Peace report, the "
-            "Knesset vote & the Deutsche Bank files (Tue).")
+            "York · Nvidia's results, the Board of Peace report & the "
+            "Knesset vote (Tue) · the Deutsche Bank–Epstein files (Tue) "
+            "· COP31's scheduled close (Fri) · Cyclone Akvan's landfall "
+            "(Fri).")
     font = F(SANS, 9.5)
     lines = wrap(cnv, title + body, font, SPAN - 20)
     ty = y0 + 6
@@ -918,10 +1155,11 @@ def footer(cnv):
     put(cnv, EDGE, 1003,
         "Every story happened, or was first reported, on Thursday "
         "19 November 2026; contested claims are marked as claims. "
-        "Original drawings.", F(SANS, 9.5), fill=GREY)
+        "Original drawings.", F(SANS, 8.5), fill=GREY)
     put_r(cnv, PAGE - EDGE, 1003,
-          "Sources: Reuters · AP · AFP · BBC · Al Jazeera · NASA · IMD · "
-          "ReliefWeb · Xinhua", F(SANS, 9.5), fill=GREY)
+          "Sources: Reuters · AP · AFP · BBC · Al Jazeera · IMD · "
+          "Yonhap · Antara · RNZ · Xinhua · Nature", F(SANS, 8.5),
+          fill=GREY)
 
 
 def compose():
@@ -933,13 +1171,14 @@ def compose():
     # three large panels
     edges = [EDGE + round(i * SPAN / 3) for i in range(4)]
     for i, spec in enumerate(TOP):
-        render_panel(cnv, (edges[i] + (5 if i else 0), 154,
-                           edges[i + 1] - (5 if i < 2 else 0), 344),
+        render_panel(cnv, (edges[i] + (5 if i else 0), 162,
+                           edges[i + 1] - (5 if i < 2 else 0), 310),
                      spec, big=True)
-    # two rows of four mini panels
+    # three rows of four mini panels
     edges = [EDGE + round(i * SPAN / 4) for i in range(5)]
-    for row, specs, (ry0, ry1) in ((0, MINI_A, (350, 508)),
-                                   (1, MINI_B, (514, 672))):
+    for row, specs, (ry0, ry1) in ((0, MINI_A, (316, 430)),
+                                   (1, MINI_B, (436, 550)),
+                                   (2, MINI_C, (556, 670))):
         for c, spec in enumerate(specs):
             render_panel(cnv, (edges[c] + (5 if c else 0), ry0,
                                edges[c + 1] - (5 if c < 3 else 0), ry1),
