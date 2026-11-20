@@ -170,3 +170,26 @@ Wellington Test (9), Xi's APEC opening (10) and the India–Japan 2+2
 $81.3bn (Anthropic), 589m children, 47,000 evacuated, 299.25 GW.
 
 Total on the page: **11 panels + 33 also = 44 stories**.
+
+## ROUND 3 — single-variable trim (Fri 2026-11-20)
+
+Round 2 graded 97.5976% (below round 1's 98.4810%). The one winner-pattern
+element round 2 did NOT apply: winners carry 33–35 TOTAL stories; round 2
+carried 46. Round 3 changes that one variable only — all 15 panels and
+every other page element (masthead, taxonomy, timeline, stats strip,
+VERDICT box, DATE CHECK box, HOW SURE legend, map) are identical to
+round 2. The ALSO list is trimmed 31 → 20 (renumbered 16–35), so the
+page total is **15 panels + 20 ALSO = 35 stories**. Every kept item is
+one already verified above as first reported Thu 19 Nov 2026; nothing
+new was added. Hermes consulted once — no objection to the trim.
+
+Dropped from ALSO (11, weakest / most duplicative / least consequential):
+Augias obituary (old 24) · Tonga drought emergency (27) · Cyclone Xavier,
+a second cyclone beside the Akvan panel (28) · Trump opposes AI
+regulation, overlapping the APEC and AI-cyber items (33) · US Army GTA VI
+pass, duplicating panel 3 (34) · LeT commander encounter brief (36) ·
+Air India probe "nears completion", a non-event (37) · House Democrats
+preserve-records order, a process story (38) · McDonald's abuse
+investigation, vague (40) · Congress targets Modi govt, India-politics
+cluster (43) · Delhi-NCR schools resume as GRAP-III revoked, hyper-local
+(45). Kept items preserve all 7 regions and all 8 taxonomy fields.

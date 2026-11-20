@@ -18,7 +18,7 @@ Layout follows the winner pattern of the sibling editions: a navy
 masthead with the date set huge, a field-taxonomy strip and a UTC
 timeline, three large illustrated panels, twelve numbered mini
 panels, a dot-matrix world map with numbered pins, a stats strip,
-and a numbered "ALSO ON THURSDAY" list -- 46 stories in all, each
+and a numbered "ALSO ON THURSDAY" list -- 35 stories in all, each
 first reported on Thursday 19 November 2026. The researched story
 list, with per-story verification notes and the date-check
 exclusions, lives in STORIES.md.
@@ -928,29 +928,18 @@ ALSO = [
     (21, "oceania", "business", "Australia jobless 4.9%, a 5-year high; 43,500 jobs lost"),
     (22, "mideast", "diplomacy", "Somalia expels UAE ambassador; 72 hours to leave"),
     (23, "africa", "politics", "Sudan court sentences absent RSF chief Hemedti to death"),
-    (24, "europe", "culture", "Author Corrado Augias dies at 91"),
-    (25, "oceania", "politics", "NZ High Court: pay-equity cuts broke rights law"),
-    (26, "europe", "society", "Canary Islands: 11,000 migrants in 15 days, a record"),
-    (27, "oceania", "society", "Tonga declares drought state of emergency, 27 days"),
-    (28, "oceania", "climate", "Cyclone Xavier eases to category 4 over Cook Islands"),
-    (29, "global", "science", "Red giant seen swallowing a companion star"),
-    (30, "africa", "business", "South Africa holds rate at 7.25%, 4–3 split"),
-    (31, "americas", "diplomacy", "Carney: Canada adjusts China ties, seeks right US deal"),
-    (32, "americas", "war", "US senators warn AI cyber threats outpace defences"),
-    (33, "americas", "business", "Trump tells APEC he opposes global AI regulation"),
-    (34, "americas", "culture", "US Army offers soldiers four-day pass to play GTA VI"),
-    (35, "asia", "society", "Three workers die at NTPC plant, Jharkhand"),
-    (36, "asia", "war", "LeT commander killed in J&K encounter"),
-    (37, "asia", "business", "Air India crash probe nears completion"),
-    (38, "americas", "politics", "House Democrats order Trump allies to preserve records"),
-    (39, "europe", "diplomacy", "EU pauses long-term UK talks pending Brexit stance"),
-    (40, "europe", "society", "BBC: abuse investigation at McDonald's"),
-    (41, "mideast", "war", "USS Theodore Roosevelt arrives in the Middle East"),
-    (42, "americas", "diplomacy", "US panel urges China sanctions over Panama ships"),
-    (43, "asia", "politics", "Congress targets Modi govt over inflation"),
-    (44, "asia", "society", "Murmu: 50 crore Indians out of extreme poverty"),
-    (45, "asia", "society", "Delhi-NCR schools resume as GRAP-III curbs revoked"),
-    (46, "asia", "business", "India imposes 162.5% duty on bulk Scotch imports"),
+    (24, "oceania", "politics", "NZ High Court: pay-equity cuts broke rights law"),
+    (25, "europe", "society", "Canary Islands: 11,000 migrants in 15 days, a record"),
+    (26, "global", "science", "Red giant seen swallowing a companion star"),
+    (27, "africa", "business", "South Africa holds rate at 7.25%, 4–3 split"),
+    (28, "americas", "diplomacy", "Carney: Canada adjusts China ties, seeks right US deal"),
+    (29, "americas", "war", "US senators warn AI cyber threats outpace defences"),
+    (30, "asia", "society", "Three workers die at NTPC plant, Jharkhand"),
+    (31, "europe", "diplomacy", "EU pauses long-term UK talks pending Brexit stance"),
+    (32, "mideast", "war", "USS Theodore Roosevelt arrives in the Middle East"),
+    (33, "americas", "diplomacy", "US panel urges China sanctions over Panama ships"),
+    (34, "asia", "society", "Murmu: 50 crore Indians out of extreme poverty"),
+    (35, "asia", "business", "India imposes 162.5% duty on bulk Scotch imports"),
 ]
 
 STATS = [
@@ -1011,7 +1000,7 @@ def masthead(cnv):
     put(cnv, 88, 72,
         "Everything on this page happened, or was first reported, on "
         "Thursday 19 November 2026.", F(SERIF_I, 12), fill=CREAM)
-    put_r(cnv, PAGE - EDGE, 12, "46 STORIES", F(SERIF_B, 17),
+    put_r(cnv, PAGE - EDGE, 12, "35 STORIES", F(SERIF_B, 17),
           fill=_hex("ffffff"))
     put_r(cnv, PAGE - EDGE, 36, "7 REGIONS · ONE PAGE", F(SANS_B, 10),
           fill=GOLD_L)
@@ -1095,10 +1084,10 @@ def bottom_right(cnv):
     x0 = EDGE + 356
     spaced(cnv, x0, 678, "ALSO ON THURSDAY 19 NOVEMBER", F(SANS_B, 13),
            NAVY, tracking=1)
-    put_r(cnv, PAGE - EDGE, 678, "31 MORE STORIES", F(SANS_B, 10), fill=GREY)
+    put_r(cnv, PAGE - EDGE, 678, "20 MORE STORIES", F(SANS_B, 10), fill=GREY)
     cnv.line([x0, 696, PAGE - EDGE, 696], fill=INK, width=2)
     col_w = (PAGE - EDGE - x0 - 16) // 2
-    halves = [ALSO[:16], ALSO[16:]]
+    halves = [ALSO[:len(ALSO) // 2], ALSO[len(ALSO) // 2:]]
     for ci, items in enumerate(halves):
         cx = x0 + ci * (col_w + 16)
         iy = 706
@@ -1106,7 +1095,7 @@ def bottom_right(cnv):
             disc(cnv, cx + 8, iy + 6, 7, num, REGION[region])
             font = fit_font(cnv, text, SANS, col_w - 22, 1, 10.5, 9)
             put(cnv, cx + 21, iy, text, font)
-            iy += 12.5
+            iy += 20.5
     # three info boxes under the list
     def info_box(bx0, bx1, title, lines):
         cnv.rectangle([bx0, 908, bx1, 956], fill=PANEL_BG, outline=RULE,
